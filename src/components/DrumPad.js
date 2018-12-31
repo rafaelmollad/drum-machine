@@ -7,14 +7,16 @@ class DrumPad extends Component {
       audio: new Audio(this.props.url)
     };
   }
+
   render() {
     return (
       <div
+        // When a component is clicked, playMusic will be called
         onClick={() => this.props.playMusic(this.state.audio)}
         className="drum-pad"
         id={this.props.id}
       >
-        {this.props.keyName}
+        {this.props.id}
       </div>
     );
   }
