@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
+
 import DrumPad from "./components/DrumPad";
+import Display from "./components/Display";
 
 class App extends Component {
   constructor(props) {
@@ -53,7 +55,8 @@ class App extends Component {
           url: "https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3"
         }
       ],
-      audio: ""
+      audio: "",
+      displayText: ""
     };
   }
 
@@ -68,18 +71,26 @@ class App extends Component {
       drumPad => drumPad.id == e.key.toUpperCase()
     );
 
-    // Define variable to store the drumPad url
+    // Define variables to store the drumPad url and name
     let elementUrl;
+    let elementName;
 
     // Check that the key pressed is a valid key
     if (element[0] !== undefined) {
       elementUrl = element[0]["url"];
-    }
+      elementName = element[0]["name"];
 
-    // Update audio and play it
+      // Call handleUpdate
+      this.handleUpdate(elementName, elementUrl);
+    }
+  };
+
+  // Update audio and display text
+  handleUpdate = (text, url) => {
     this.setState(
       {
-        audio: new Audio(elementUrl)
+        audio: new Audio(url),
+        displayText: text
       },
       () => this.playMusic(this.state.audio)
     );
@@ -93,14 +104,14 @@ class App extends Component {
     return (
       <div className="App">
         <div id="drum-machine">
-          <div id="display" />
+          <Display displayText={this.state.displayText} />
           {this.state.drumPads.map(drumPad => (
             <DrumPad
-              ref="drumPadRef"
               id={drumPad.id}
               key={drumPad.id}
               url={drumPad.url}
-              playMusic={this.playMusic}
+              name={drumPad.name}
+              handleUpdate={this.handleUpdate}
             />
           ))}
         </div>
