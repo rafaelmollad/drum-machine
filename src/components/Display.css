@@ -1,0 +1,11 @@
+/* Display */
+#display {
+  order: 2;
+  font-size: 2.5em;
+  text-align: center;
+  color: #b1bed5;
+}
+
+#display p {
+  padding: 40px;
+}
