@@ -1,8 +1,9 @@
 import React from "react";
+import "./Display.css";
 
 function Display(props) {
   return (
-    <div>
+    <div id="display">
       <p>{props.displayText}</p>
     </div>
   );

@@ -1,0 +1,12 @@
+/* DrumPad */
+.drum-pad {
+  padding: 40px;
+  font-size: 2em;
+  background: #f4f3f3;
+  color: rgba(0, 0, 0, 0.7);
+  border: 1px solid #b1bed5;
+}
+
+.drum-pad:hover {
+  cursor: pointer;
+}

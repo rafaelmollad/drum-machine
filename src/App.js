@@ -105,15 +105,17 @@ class App extends Component {
       <div className="App">
         <div id="drum-machine">
           <Display displayText={this.state.displayText} />
-          {this.state.drumPads.map(drumPad => (
-            <DrumPad
-              id={drumPad.id}
-              key={drumPad.id}
-              url={drumPad.url}
-              name={drumPad.name}
-              handleUpdate={this.handleUpdate}
-            />
-          ))}
+          <div id="drumpads-container">
+            {this.state.drumPads.map(drumPad => (
+              <DrumPad
+                id={drumPad.id}
+                key={drumPad.id}
+                url={drumPad.url}
+                name={drumPad.name}
+                handleUpdate={this.handleUpdate}
+              />
+            ))}
+          </div>
         </div>
       </div>
     );
